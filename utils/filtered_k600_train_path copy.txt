@@ -16,5 +16,3 @@ https://s3.amazonaws.com/kinetics/600/train/changing oil.tar.gz
 https://s3.amazonaws.com/kinetics/600/train/chiseling stone.tar.gz
 https://s3.amazonaws.com/kinetics/600/train/chiseling wood.tar.gz
 https://s3.amazonaws.com/kinetics/600/train/cooking on campfire.tar.gz
-https://s3.amazonaws.com/kinetics/600/train/counting money.tar.gz
-https://s3.amazonaws.com/kinetics/600/train/curling (sport).tar.gz
