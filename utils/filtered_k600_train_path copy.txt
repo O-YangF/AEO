@@ -8,11 +8,3 @@ https://s3.amazonaws.com/kinetics/600/train/braiding hair.tar.gz
 https://s3.amazonaws.com/kinetics/600/train/breading or breadcrumbing.tar.gz
 https://s3.amazonaws.com/kinetics/600/train/breaking boards.tar.gz
 https://s3.amazonaws.com/kinetics/600/train/building sandcastle.tar.gz
-https://s3.amazonaws.com/kinetics/600/train/calligraphy.tar.gz
-https://s3.amazonaws.com/kinetics/600/train/capoeira.tar.gz
-https://s3.amazonaws.com/kinetics/600/train/carving pumpkin.tar.gz
-https://s3.amazonaws.com/kinetics/600/train/changing gear in car.tar.gz
-https://s3.amazonaws.com/kinetics/600/train/changing oil.tar.gz
-https://s3.amazonaws.com/kinetics/600/train/chiseling stone.tar.gz
-https://s3.amazonaws.com/kinetics/600/train/chiseling wood.tar.gz
-https://s3.amazonaws.com/kinetics/600/train/cooking on campfire.tar.gz
