@@ -26,6 +26,16 @@ valid_paths, _ = load_txt_file('/kaggle/working/AEO/HAC-rgb-flow-audio/splits/Ki
 folder_path = '/kaggle/working/EPIC-KITCHENS'
 output_path = '/kaggle/working/EPIC-KITCHENS'
 num = 0
+
+# 添加调试代码
+print("valid_paths 示例（前5条）:", valid_paths[:5])
+print("当前目录文件示例（前5个）:")
+for root, dirs, files in os.walk(folder_path):
+    for file in files[:5]:
+        file_path_1 = os.path.join(root[2:], file)
+        print("生成的 file_path_1:", file_path_1)
+    break  # 只检查第一层
+
 for root, dirs, files in os.walk(folder_path):
     for file in files:
         file_path = os.path.join(root, file)
