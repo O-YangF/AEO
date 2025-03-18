@@ -1,5 +1,4 @@
 import os
-import glob
 import subprocess
 
 def load_txt_file(file_path):
@@ -11,32 +10,39 @@ def load_txt_file(file_path):
     return paths, labels
 
 def convert(v, output_path):
-    subprocess.check_call([
-    'ffmpeg',
-    '-n',
-    '-i', v,
-    '-acodec', 'pcm_s16le',
-    '-ac','1',
-    '-ar','16000',
-    output_path + '%s.wav' % v[:-4]])
-
+    # 确保输出目录存在
+    os.makedirs(output_path, exist_ok=True)
     
-valid_paths, _ = load_txt_file('/kaggle/working/AEO/HAC-rgb-flow-audio/splits/Kinetics_test_100.txt')
+    # 生成输出文件名（保留类别目录结构）
+    output_file = os.path.join(output_path, os.path.relpath(v, '/kaggle/working/EPIC-KITCHENS')).replace('.mp4', '.wav')
+    os.makedirs(os.path.dirname(output_file), exist_ok=True)
+    
+    subprocess.check_call([
+        'ffmpeg',
+        '-n',
+        '-i', os.path.join('/kaggle/working/EPIC-KITCHENS', v),  # 完整输入路径
+        '-acodec', 'pcm_s16le',
+        '-ac','1',
+        '-ar','16000',
+        output_file
+    ])
 
+valid_paths, _ = load_txt_file('/kaggle/working/AEO/HAC-rgb-flow-audio/splits/Kinetics_test_100.txt')
 folder_path = '/kaggle/working/EPIC-KITCHENS'
 output_path = '/kaggle/working/Kinetics-600/video'
 num = 0
+
 for root, dirs, files in os.walk(folder_path):
     for file in files:
-        file_path = os.path.join(root, file)
-        file_path_1 = os.path.join(root[2:], file)
-        if file_path_1 in valid_paths and file_path.endswith('.mp4'):
-            # Delete the file
-            try:
-                convert(file_path_1, output_path)
-                num = num + 1
-            except:
-                print("no audio: ")
-                print(file_path_1)
+        if file.endswith('.mp4'):
+            # 生成相对于 folder_path 的路径（如 'building sandcastle/file.mp4'）
+            relative_path = os.path.relpath(os.path.join(root, file), folder_path)
+            
+            if relative_path in valid_paths:
+                try:
+                    convert(relative_path, output_path)
+                    num += 1
+                except Exception as e:
+                    print(f"转换失败: {relative_path}, 错误: {str(e)}")
 
-print(f"Created {str(num)} files")
+print(f"Created {num} files")
