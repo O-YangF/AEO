@@ -21,7 +21,7 @@ def convert(v, output_path):
     output_path + '%s.wav' % v[:-4]])
 
     
-valid_paths, _ = load_txt_file('./HAC-rgb-flow-audio/splits/Kinetics_test_100.txt')
+valid_paths, _ = load_txt_file('../HAC-rgb-flow-audio/splits/Kinetics_test_100.txt')
 
 folder_path = './'
 output_path = './'
