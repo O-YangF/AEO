@@ -25,7 +25,7 @@ valid_paths, _ = load_txt_file('/kaggle/working/AEO/HAC-rgb-flow-audio/splits/Ki
 
 folder_path = '/kaggle/working/EPIC-KITCHENS'
 output_path = '/kaggle/working/EPIC-KITCHENS'
-num = 0s
+num = 0
 for root, dirs, files in os.walk(folder_path):
     for file in files:
         file_path = os.path.join(root, file)
